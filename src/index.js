@@ -38,41 +38,40 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-   let str='';
-   let k = 0;
-   let space='**********';
-   while (k<=expr.length)
-   {
-     let temp = str.substr(k,10);
-     if (temp==space) str+=' ';
-     else
-     {
-        for (let i=0;i<temp.length-1;i++)
-        {
-             let tempstr='';
-            if (temp[i]==1)
-            {
+    let str='';
+    let k = 0;
+    let space='**********';
+    while (k<=expr.length)
+    {     
+      let temp = expr.substr(k,10);
+       if (temp==space) {str+=' ';k+=10;}
+    else
+ {
+   let tempstr='';
+ for (let i=0;i<temp.length-1;i++)
+         {
+             if (temp[i]==1)
+             {
                  if (temp[i+1]==1)
-                {
-                     tempstr='.';
-                    i++;
+                 {
+                      tempstr+='-';i++;
                 }
-                else{
-                    tempstr='-';
-                    i++;
-                }
-            }
-            k+=10;
-            for (let prop in MORSE_TABLE)
-            {
-                if (item == tempstr) str = item[key];
-            }
-        }
-    }
-    }      
-    return str;
-}
+               else{
+                    tempstr+='.';i++;
+                 }
+             }
+         }
+             k+=10;
+ for (let prop in MORSE_TABLE)
+             {
+                 if (prop == tempstr) str+= MORSE_TABLE[prop];
+             }
+         }
+     
+     }     
+     //console.log(str);
+     return str;
+ }
 
-module.exports = {
-    decode
-}
+
+
