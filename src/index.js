@@ -73,5 +73,7 @@ function decode(expr) {
      return str;
  }
 
-
+ module.exports = {
+    decode
+}
 
